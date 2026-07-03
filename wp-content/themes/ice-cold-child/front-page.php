@@ -1137,12 +1137,10 @@ $jie_img = content_url('uploads/2026/02/FB_IMG_1740290134515.jpg');
 
             <!-- Left: Text -->
             <div class="mukc-beginners__right mukc-reveal">
-                <span class="mukc-beginners__badge">Limited Time Program</span>
-                <h2>Beginner program</h2>
+                <h2>Beginner Program</h2>
                 <div class="mukc-beginners__details">
                     <p><strong>Every Friday</strong></p>
                     <p><strong>6:30 pm – 8:30 pm</strong></p>
-                    <p>27th Feb – 27th Mar</p>
                     <p>Room 304, Building 199 – Stop 1</p>
                     <p>University of Melbourne</p>
                 </div>
