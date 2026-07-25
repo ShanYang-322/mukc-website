@@ -24,6 +24,8 @@ $alex_img = content_url('uploads/2026/02/IMG_0822-scaled.jpg');
 $sean_img = content_url('uploads/2026/02/IMG_0535.jpg');
 $joachim_img = content_url('uploads/2026/02/DSC5400-scaled-1.jpg');
 $jie_img = content_url('uploads/2026/02/FB_IMG_1740290134515.jpg');
+$newsletter_url = 'https://melbunikarateclub.substack.com/p/d97cf8ff-63eb-4feb-99c8-83198eff9362?postPreview=paid&updated=2026-04-12T07%3A59%3A43.175Z&audience=everyone&free_preview=false&freemail=true&fbclid=IwY2xjawRUGu1leHRuA2FlbQIxMABicmlkETFJU2J1bGd4MnpSWkxUSGVnc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHrE0lrYmtp9JqH2fmDbfGPOKADZYEc8qlkR-r26eUfLbsiG10j6HhXYYDnoV_aem_RcVhMG1AVru9CjS0rsWVsw';
+$newsletter_image = 'https://substackcdn.com/image/fetch/$s_!Sv6P!,w_848,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F72133efa-54d5-4e4e-aad3-aeb76f246a7e_2048x1365.jpeg';
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -740,6 +742,103 @@ $jie_img = content_url('uploads/2026/02/FB_IMG_1740290134515.jpg');
             color: #111111;
             margin-bottom: 4px;
         }
+        
+        /* ================================================
+           ANNOUNCEMENTS SECTION
+           ================================================ */
+        .mukc-announcements {
+            background: #e8e7e0;
+            padding: 72px 60px;
+            color: #111111;
+        }
+
+        .mukc-announcements__inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mukc-announcements__header {
+            max-width: 720px;
+            margin: 0 auto 32px;
+            text-align: center;
+        }
+
+        .mukc-announcements__header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #111111;
+            margin-bottom: 14px;
+            letter-spacing: -0.01em;
+        }
+
+        .mukc-announcements__header p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #111111;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .mukc-announcements__window {
+            max-height: 360px;
+            overflow-y: auto;
+            padding: 26px;
+            border-radius: 14px;
+            border: 1px solid rgba(34, 49, 78, 0.12);
+            background: #ffffff;
+        }
+
+        .mukc-announcements__window:focus {
+            outline: 3px solid rgba(34, 49, 78, 0.18);
+            outline-offset: 4px;
+        }
+
+        .mukc-announcement {
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(34, 49, 78, 0.08);
+            text-align: left;
+        }
+
+        .mukc-announcement:last-child {
+            border-bottom: none;
+        }
+
+        .mukc-announcement__meta {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #666666;
+            margin-bottom: 10px;
+        }
+
+        .mukc-announcement h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 10px;
+            line-height: 1.25;
+        }
+
+        .mukc-announcement p {
+            font-size: 0.95rem;
+            line-height: 1.75;
+            color: #111111;
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .mukc-announcements {
+                padding: 60px 24px;
+            }
+
+            .mukc-announcements__window {
+                max-height: 320px;
+                padding: 18px;
+            }
+        }
 
         /* ================================================
            FOOTER
@@ -851,10 +950,10 @@ $jie_img = content_url('uploads/2026/02/FB_IMG_1740290134515.jpg');
         .mukc-whatson {
             position: relative;
             width: 100%;
-            min-height: 520px;
+            min-height: 680px;
             overflow: hidden;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             color: #ffffff;
         }
 
@@ -864,16 +963,22 @@ $jie_img = content_url('uploads/2026/02/FB_IMG_1740290134515.jpg');
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center bottom;
             filter: brightness(0.55);
         }
 
         .mukc-whatson__overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to right,
-                    rgba(0, 0, 0, 0.65) 0%,
-                    rgba(0, 0, 0, 0.30) 55%,
-                    rgba(0, 0, 0, 0.05) 100%);
+            background:
+                linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.30) 0%,
+                    rgba(0, 0, 0, 0.16) 52%,
+                    rgba(0, 0, 0, 0.06) 100%),
+                linear-gradient(to right,
+                    rgba(0, 0, 0, 0.70) 0%,
+                    rgba(0, 0, 0, 0.35) 48%,
+                    rgba(0, 0, 0, 0.08) 100%);
         }
 
         .mukc-whatson__inner {
@@ -881,13 +986,13 @@ $jie_img = content_url('uploads/2026/02/FB_IMG_1740290134515.jpg');
             z-index: 2;
             max-width: calc(1100px + 120px);
             margin: 0 auto;
-            padding: 96px 60px;
+            padding: 74px 60px 260px;
             width: 100%;
         }
 
         .mukc-whatson__content {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             gap: 60px;
         }
@@ -918,48 +1023,101 @@ $jie_img = content_url('uploads/2026/02/FB_IMG_1740290134515.jpg');
             color: #ffffff;
         }
 
-        .mukc-whatson__btn {
+        .mukc-newsletter-card {
+            flex: 0 0 min(360px, 34vw);
+            display: block;
+            overflow: hidden;
+            color: #111111;
+            text-decoration: none;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.58);
+            border-radius: 8px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.34);
+            transition: transform 0.22s ease, box-shadow 0.22s ease;
+        }
+
+        .mukc-newsletter-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.42);
+        }
+
+        .mukc-newsletter-card__media {
+            position: relative;
+            aspect-ratio: 16 / 6;
+            overflow: hidden;
+            background: #202020;
+        }
+
+        .mukc-newsletter-card__media img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center 46%;
+            transition: transform 0.35s ease;
+        }
+
+        .mukc-newsletter-card:hover .mukc-newsletter-card__media img {
+            transform: scale(1.04);
+        }
+
+        .mukc-newsletter-card__badge {
+            position: absolute;
+            left: 14px;
+            top: 14px;
+            padding: 6px 9px;
+            background: rgba(17, 17, 17, 0.82);
+            color: #ffffff;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .mukc-newsletter-card__body {
+            padding: 16px 20px 18px;
+        }
+
+        .mukc-newsletter-card__kicker {
+            margin-bottom: 6px;
+            color: #8f1d1d;
+            font-size: 0.72rem;
+            font-weight: 850;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .mukc-newsletter-card__title {
+            margin: 0 0 8px;
+            color: #111111;
+            font-size: 1.16rem;
+            font-weight: 850;
+            line-height: 1.14;
+        }
+
+        .mukc-newsletter-card__copy {
+            margin: 0 0 12px;
+            color: #454545;
+            font-size: 0.86rem;
+            line-height: 1.42;
+        }
+
+        .mukc-newsletter-card__action {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            background: transparent;
-            color: #ffffff;
-            border: 2px solid #ffffff;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 12px 26px;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-            margin-top: 8px;
-        }
-
-        .mukc-whatson__btn:hover {
-            background: #ffffff;
             color: #111111;
-            cursor: pointer;
-        }
-
-        .mukc-whatson__cta {
-            flex-shrink: 0;
-            font-size: 1.8rem;
+            font-size: 0.86rem;
             font-weight: 800;
-            color: #ffffff;
-            line-height: 1.25;
-            text-align: right;
-            max-width: 340px;
-            text-shadow: 0 3px 16px rgba(0, 0, 0, 0.5);
-            border-right: 5px solid #ffffff;
-            padding-right: 24px;
         }
 
         @media (max-width: 900px) {
             .mukc-whatson {
-                min-height: 420px;
+                min-height: 760px;
             }
 
             .mukc-whatson__inner {
-                padding: 60px 24px;
+                padding: 54px 24px 280px;
             }
 
             .mukc-whatson__content {
@@ -971,15 +1129,13 @@ $jie_img = content_url('uploads/2026/02/FB_IMG_1740290134515.jpg');
                 font-size: 2rem;
             }
 
-            .mukc-whatson__cta {
-                text-align: left;
-                border-right: none;
-                padding-right: 0;
-                border-left: 5px solid #ffffff;
-                padding-left: 24px;
-                font-size: 1.5rem;
-                max-width: none;
+            .mukc-newsletter-card {
+                flex-basis: auto;
+                width: 100%;
+                max-width: 430px;
+                align-self: flex-start;
             }
+
         }
 
         @media (max-width: 768px) {
@@ -1255,21 +1411,199 @@ $jie_img = content_url('uploads/2026/02/FB_IMG_1740290134515.jpg');
                 <div class="mukc-whatson__text mukc-reveal">
                     <h2>What's On</h2>
                     <p>
-                        <strong>Our annual camp is just around the corner</strong>, in collaboration with the
-                        Melbourne Uni Rhee Taekwondo Club.
+                        <strong>Camp 2026 was a huge success</strong>, with great training, great food,
+                        and a fantastic new venue. Thanks to everyone who joined us for an unforgettable
+                        weekend with Rhee Taekwondo and Wushu.
                     </p>
                     <p>
-                        Train hard, build friendships, and spend an amazing Easter weekend together.
-                        Don&rsquo;t miss this opportunity to grow stronger &mdash; as martial artists
-                        and as a&nbsp;community.
+                        Coming up next, we&rsquo;ll be heading to <strong>go-karting</strong> in May, with the date to be
+                        confirmed soon, so keep an eye out and respond to Ibuki&rsquo;s poll.
                     </p>
-                    <p style="margin-top: 24px;">
-                        <a href="https://forms.gle/YoazBbPkdhb9nR7cA" target="_blank" class="mukc-whatson__btn">
-                            Register for the Easter Camp &rarr;
-                        </a>
+                    <p>
+                        We&rsquo;re also planning a <strong>Camp Recap event</strong> and will soon be sharing new
+                        Karate Journey member stories.
                     </p>
                 </div>
-                <p class="mukc-whatson__cta mukc-reveal" data-delay="1">Become part of the<br>MUKC community.</p>
+                <a href="<?php echo esc_url($newsletter_url); ?>" target="_blank" rel="noopener" class="mukc-newsletter-card mukc-reveal" data-delay="1" aria-label="Read MUKC Newsletter April 2026 on Substack">
+                    <div class="mukc-newsletter-card__media">
+                        <img src="<?php echo esc_url($newsletter_image); ?>" alt="MUKC Martial Arts Camp 2026 group photo">
+                        <span class="mukc-newsletter-card__badge">Newsletter</span>
+                    </div>
+                    <div class="mukc-newsletter-card__body">
+                        <p class="mukc-newsletter-card__kicker">April 2026</p>
+                        <h3 class="mukc-newsletter-card__title">MUKC Newsletter</h3>
+                        <p class="mukc-newsletter-card__copy">Updates from Martial Arts Camp 2026 and the next social event.</p>
+                        <span class="mukc-newsletter-card__action">Read the full update &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ======================== ANNOUNCEMENTS ======================== -->
+    <section class="mukc-announcements" id="announcements">
+        <div class="mukc-announcements__inner">
+            <div class="mukc-announcements__header mukc-reveal">
+                <h2>Announcements</h2>
+                <p>Latest club updates, events and important notices.</p>
+            </div>
+            <div class="mukc-announcements__window mukc-reveal" data-delay="1" tabindex="0" aria-label="Announcements">
+                <article class="mukc-announcement">
+                    <span class="mukc-announcement__meta">July 18, 2026</span>
+                    <h3>Lion Bushido Tournament Registration Open</h3>
+                    <p>Hi everyone!</p><br>
+
+                    <p>The Lion Bushido August Tournament has been confirmed for <strong>Sunday, 30th August</strong>, with registrations closing on <strong>Tuesday, 25th August</strong>.</p><br>
+
+                    <p>There are divisions for <strong>point sparring, continuous sparring, kata</strong>, and more, with events available for both male and female competitors. Further details and registration instructions can be found in the attached poster.</p><br>
+
+                    <p><strong>The club will be reimbursing $20 per event</strong>, meaning your entry fees will be:</p><br>
+
+                    <ul>
+                        <li>1 event: $50 (normally $70)</li>
+                        <li>2 events: $55 (normally $95)</li>
+                        <li>3 events: $50 (normally $110)</li>
+                        <li>...and so on.</li>
+                    </ul><br>
+
+                    <p>Once you've registered, please let me know so I can organise transport/carpooling for the day.</p><br>
+                    
+                    <p>With the tournament coming up, we'll also be shifting our focus in upcoming classes towards tournament preparation. Please make sure you bring your <strong>mouth guard, punching mitts, and shin &amp; instep guards</strong> to every training session so you can safely participate in sparring.</p><br>
+                    
+                    <p>If you still need equipment, you can find pricing at <a href="https://www.mukc.org.au/gear">www.mukc.org.au/gear</a>, or feel free to reach out to me or any committee member and we'll be happy to help.</p><br>
+                    
+                    <p>If you have any questions about the tournament, don't hesitate to ask. Hope to see lots of members competing!</p><br>
+                    
+                    <p>Cheers,<br>Sean<br>President</p>
+                </article>
+                <article class="mukc-announcement">
+                    <span class="mukc-announcement__meta">July 2, 2026</span>
+                    <h3>End of Semester Dinner and Upcoming Performances!</h3>
+                    <p>Hi everyone!</p><br>
+
+                    <p>Hope you've all been enjoying the semester break! We have a few updates to share:</p><br>
+                    
+                    <p><strong>🍽️ End of Semester Dinner</strong></p>
+                    
+                    <p>Our End of Semester Dinner has been confirmed for <strong>Wednesday, 8th July</strong>, from <strong>7:30pm to 9:30pm</strong> at the <strong>Clyde Hotel</strong>. Please note that there will be <strong>no training that evening</strong>, as we'll meet directly at the restaurant instead. Looking forward to celebrating another great semester with everyone!</p><br>
+                    
+                    <p><strong>🥋 Friday Training Sessions</strong></p>
+                    
+                    <p>A reminder that our Friday training sessions resume tomorrow! These sessions will continue throughout the rest of the year, with the exception of:</p><br>
+                    
+                    <ul>
+                        <li>25th September</li>
+                        <li>23rd October</li>
+                    </ul><br>
+                    
+                    <p>We'll send out reminders closer to those dates.</p><br>
+                    
+                    <p><strong>🎉 Semester 2 Open Day – Sunday, 16th August</strong></p>
+                    
+                    <p>The University of Melbourne's Semester 2 Open Day will be held on <strong>Sunday, 16th August</strong>, with an estimated <strong>45,000 visitors</strong> expected on campus.</p><br>
+                    
+                    <p>We'll be putting on a performance showcasing <strong>kata (forms)</strong>, <strong>bunkai (applications)</strong>, and <strong>kumite (sparring)</strong>. If you're available and would like to perform with us, please let me know and I'll add you to the performance group chat.</p><br>
+                    
+                    <p><strong>🎪 Semester 2 Clubs Day – Wednesday, 22nd July</strong></p>
+                    
+                    <p>Semester 2 Clubs Day will be held on <strong>Wednesday, 22nd July</strong>, from <strong>11:00am to 3:00pm</strong>, where sporting clubs from across the university will be showcasing what they do.</p><br>
+                    
+                    <p>We'll once again be performing <strong>kata</strong>, <strong>bunkai</strong>, and <strong>kumite</strong> demonstrations. If you're free and would like to be involved, please reach out and I'll add you to the performance group chat.</p><br>
+                    
+                    <p>If you have any questions about any of the above, feel free to get in touch. Looking forward to seeing you all soon!</p><br>
+                    
+                    <p>Kind regards,<br>
+                    Sean Lee<br>
+                    President</p>
+                </article>
+                <article class="mukc-announcement">
+                    <span class="mukc-announcement__meta">June 10, 2026</span>
+                    <h3>Member Feedback Form</h3>
+                    <p>Hi everyone!</p><br>
+
+                    <p>We've put together a <strong>member feedback form</strong> to help us gather feedback and continue improving the club.</p><br>
+                    
+                    <p>We know it's a little bit on the longer side, but we'd really appreciate it if you could take the time to fill it out. The survey is completely anonymous, and this is <strong>your opportunity to have your say</strong> on the direction of the club, whether there are things you'd like to see changed, improved, or even kept exactly the same.</p><br>
+                    
+                    <p>The more feedback we receive, the better we can understand what members enjoy and how we can make MUKC an even better experience for everyone.</p><br>
+                    
+                    <p>Thank you in advance!</p><br>
+                    
+                    <p><strong>Member Feedback Form:</strong> <a href="https://forms.gle/7htamzGngeH6fiHH6" target="_blank">https://forms.gle/7htamzGngeH6fiHH6</a></p><br>
+                    
+                    <p>Cheers,<br>
+                    Sean<br>President</p>
+                </article>
+                <article class="mukc-announcement">
+                    <span class="mukc-announcement__meta">May 31, 2026</span>
+                    <h3>No Friday Training</h3>
+                    <p>Hi everyone!</p><br>
+
+                    <p>The Friday training sessions <strong>WILL NOT</strong> be running during the month of <strong>June</strong>, as another club has booked the room for that period.</p><br>
+                    
+                    <p>They will also <strong>NOT</strong> be running on the following dates:</p><br>
+                    
+                    <ul>
+                        <li>Friday 25th September</li>
+                        <li>Friday 23rd October</li>
+                    </ul>
+                    
+                    <p>We'll send out a reminder closer to those dates. Thank you!</p><br>
+                    
+                    <p>Cheers,<br>Sean<br>President</p>
+                </article>
+                <article class="mukc-announcement">
+                    <span class="mukc-announcement__meta">May 18, 2026</span>
+                    <h3>Sparring Equipment</h3>
+                    <p>Hi everyone! Just a friendly reminder that you'll need sparring equipment in order to participate in sparring sessions.</p><br>
+
+                    <p>The minimum required equipment is:</p><br>
+                    
+                    <ul>
+                        <li>Mouth guard</li>
+                        <li>Shin &amp; instep guards</li>
+                        <li>Punching mitts</li>
+                    </ul><br>
+                    
+                    <p>You're absolutely welcome to source your own equipment, but the club also sells them if needed! Pricing is as follows:</p><br>
+                    
+                    <ul>
+                        <li>Shin &amp; instep guards – $25</li>
+                        <li>Punching mitts – $45</li>
+                        <li>Mouth guard – $15</li>
+                    </ul><br>
+                    
+                    <p>Payments can be made to:</p><br>
+                    
+                    <p>
+                    <strong>BSB:</strong> 083-170<br>
+                    <strong>ACC:</strong> 51-561-4159
+                    </p><br>
+                    
+                    <p>After payment, just take a screenshot and show a committee member after class, and we'll pass the equipment to you!</p><br>
+                    
+                    <p>Thank you!</p><br>
+                    
+                    <p>Kind regards,<br>
+                    Sean Lee<br>
+                    President</p>
+                </article>
+                <article class="mukc-announcement">
+                    <span class="mukc-announcement__meta">April 18, 2026</span>
+                    <h3>New Friday Sessions!</h3>
+                    <p>Hi everyone!</p><br>
+
+                    <p>In addition to our Monday and Wednesday training sessions, we'll also be running an extra <strong>Friday session</strong> from <strong>6:30pm – 8:30pm</strong> at <strong>Room 304, Building 199 (Stop 1 Building)</strong>.</p><br>
+                    
+                    <p>This session is open to all MUKC members who have paid their membership.</p><br>
+                    
+                    <p>Please note that our senior instructors, <strong>Alex</strong> and <strong>Sean</strong>, won't be leading these classes. Instead, they'll be run by our newer black belts and senior members.</p><br>
+                    
+                    <p>Hope to see you there! 🥋</p><br>
+                    <p>Kind regards,<br>
+                    Sean Lee<br>
+                    President</p>
+                </article>
             </div>
         </div>
     </section>
