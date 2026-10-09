@@ -30,3 +30,6 @@ wp-content/updraft/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Local development runtime and database
+/.local/

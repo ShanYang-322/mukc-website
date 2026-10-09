@@ -15,6 +15,65 @@ $lbkt_img = content_url('uploads/2026/02/8dcde18aad760d180471bf872c3914d0-scaled
 $lny_img = content_url('uploads/2026/02/LNY-performance.jpg');
 $clubs_img = content_url('uploads/2026/02/Clubs-Day-Semester-02-2025-5.jpg');
 
+// Keep this year's event photos with the theme so they travel with the code.
+$journey_assets = get_stylesheet_directory_uri() . '/assets/images/journey/2026/';
+$events_2026 = [
+    [
+        'title' => 'Camp 2026',
+        'image' => 'camp-2026',
+        'width' => 1800,
+        'height' => 1201,
+        'position' => 'center 60%',
+        'alt' => 'Camp participants jumping together beneath the Clifford Park sign',
+        'description' => 'A weekend together with Rhee Taekwondo and Wushu, sharing training, food and time away from campus.',
+    ],
+    [
+        'title' => 'Clubs Day 2026',
+        'image' => 'clubs-day-2026',
+        'width' => 1800,
+        'height' => 1013,
+        'position' => 'center',
+        'alt' => 'MUKC members demonstrating karate outdoors at Clubs Day',
+        'description' => 'We brought karate to campus with demonstrations and a chance for students to meet the club.',
+    ],
+    [
+        'title' => 'Go Karting',
+        'image' => 'go-karting',
+        'width' => 1800,
+        'height' => 1350,
+        'position' => 'center 60%',
+        'alt' => 'Club members posing together by the podium after go karting',
+        'description' => 'A club outing to the karting track, swapping the dojo for a little friendly competition.',
+    ],
+    [
+        'title' => 'LBKT 2026',
+        'image' => 'lbkt-2026',
+        'width' => 1800,
+        'height' => 1350,
+        'position' => 'center 65%',
+        'alt' => 'MUKC members gathered in the stands at the Lion Bushido Karate Tournament',
+        'description' => 'Our team came together for the Lion Bushido Karate Tournament, putting our training into practice and supporting each other.',
+    ],
+    [
+        'title' => 'George Bass Coastal Walk',
+        'image' => 'george-bass-coastal-walk',
+        'width' => 1800,
+        'height' => 1350,
+        'position' => 'center 75%',
+        'alt' => 'Club members together at a lookout overlooking the coast',
+        'description' => 'Time together outside the dojo, taking in the coastline on the George Bass Coastal Walk.',
+    ],
+    [
+        'title' => 'Open Day 2026',
+        'image' => 'open-day-2026-demo',
+        'width' => 1600,
+        'height' => 1066,
+        'position' => 'center 55%',
+        'alt' => 'MUKC members performing karate on campus at Open Day',
+        'description' => 'We shared a glimpse of MUKC with the university community at Open Day, introducing visitors to karate and our club.',
+    ],
+];
+
 $custom_logo_id = get_theme_mod('custom_logo');
 if ($custom_logo_id) {
     $img = wp_get_attachment_image_src($custom_logo_id, 'full');
@@ -53,6 +112,10 @@ if ($custom_logo_id) {
             -webkit-font-smoothing: antialiased;
             background: #1a1a1a;
             color: #ffffff;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
         }
 
         /* ── NAV ──────────────────────────────────────── */
@@ -204,7 +267,29 @@ if ($custom_logo_id) {
             background-image: url('<?php echo esc_url($hero_bg); ?>');
             background-size: cover;
             background-position: center 80%;
-            filter: brightness(0.8);
+            filter: brightness(0.5);
+        }
+
+        .journey-hero__content {
+            position: relative;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .journey-hero__title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+
+        .journey-hero__subtitle {
+            margin-top: 18px;
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         /* ── CLUB EVENTS ────────────────────────────── */
@@ -231,6 +316,22 @@ if ($custom_logo_id) {
         .events-subtitle {
             font-size: 1.1rem;
             color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+            max-width: 650px;
+        }
+
+        .events-year {
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .events-header--archive {
+            margin-top: 100px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .events-grid {
@@ -354,17 +455,37 @@ if ($custom_logo_id) {
                 padding: 60px 24px;
             }
 
+            .events-title {
+                font-size: 2.25rem;
+            }
+
+            .events-header {
+                margin-bottom: 36px;
+            }
+
+            .events-header--archive {
+                margin-top: 60px;
+                padding-top: 40px;
+            }
+
             .mukc-nav {
                 padding: 0 18px;
             }
 
             .mukc-nav__brand {
                 gap: 8px;
+                flex-shrink: 1;
+                min-width: 0;
+            }
+
+            .mukc-nav__brand-text {
+                min-width: 0;
             }
 
             .mukc-nav__logo {
                 width: 40px;
                 height: 40px;
+                flex-shrink: 0;
             }
 
             .mukc-nav__menu {
@@ -402,6 +523,7 @@ if ($custom_logo_id) {
 
             .mukc-nav__burger {
                 display: flex;
+                flex-shrink: 0;
                 z-index: 300;
             }
 
@@ -415,48 +537,78 @@ if ($custom_logo_id) {
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
 
-    <nav class="mukc-nav">
+    <nav class="mukc-nav" aria-label="Main navigation">
         <a class="mukc-nav__brand" href="<?php echo esc_url(home_url('/')); ?>">
             <img class="mukc-nav__logo" src="<?php echo esc_url($logo_url); ?>" alt="MUKC">
             <div class="mukc-nav__brand-text">
                 <span class="mukc-nav__name"><?php echo esc_html($site_name); ?></span>
             </div>
         </a>
-        <ul class="mukc-nav__menu">
+        <ul class="mukc-nav__menu" id="mukcMenu">
             <li><a href="<?php echo esc_url(home_url('/about-mukc/')); ?>">About MUKC</a></li>
             <li><a href="<?php echo esc_url(home_url('/our-people/')); ?>">Our People</a></li>
             <li class="is-current"><a href="<?php echo esc_url(home_url('/journey/')); ?>">Journeys</a></li>
             <li><a href="<?php echo esc_url(home_url('/gear/')); ?>">Gear</a></li>
             <li><a href="<?php echo esc_url(home_url('/contact/')); ?>">Contact Us</a></li>
         </ul>
-        <button class="mukc-nav__burger" aria-label="Toggle navigation" id="mukcBurger">
+        <button class="mukc-nav__burger" aria-label="Toggle navigation" aria-controls="mukcMenu" aria-expanded="false" id="mukcBurger">
             <span></span><span></span><span></span>
         </button>
     </nav>
 
-    <section class="journey-hero">
-        <div class="journey-hero__bg"></div>
+    <section class="journey-hero" aria-labelledby="journey-title">
+        <div class="journey-hero__bg" aria-hidden="true"></div>
+        <div class="journey-hero__content">
+            <h1 class="journey-hero__title" id="journey-title">Journeys</h1>
+            <p class="journey-hero__subtitle">The moments we've shared, in the dojo and beyond.</p>
+        </div>
     </section>
 
-    <section class="events-section">
+    <main class="events-section">
         <div class="events-container">
             <div class="events-header">
-                <h2 class="events-title">Club Events</h2>
-                <p class="events-subtitle">Annual events, and other social events</p>
+                <p class="events-year">2026</p>
+                <h2 class="events-title">A year of club memories</h2>
+                <p class="events-subtitle">Camps, competitions, campus days and social outings. A look back at what we've done together as a club.</p>
+            </div>
+
+            <div class="events-grid">
+                <?php foreach ($events_2026 as $event): ?>
+                    <article class="event-card">
+                        <div class="event-img-wrap">
+                            <img class="event-img"
+                                src="<?php echo esc_url($journey_assets . $event['image'] . '.jpg'); ?>"
+                                srcset="<?php echo esc_url($journey_assets . $event['image'] . '-900.jpg'); ?> 900w, <?php echo esc_url($journey_assets . $event['image'] . '.jpg'); ?> <?php echo esc_attr($event['width']); ?>w"
+                                sizes="(max-width: 900px) calc(100vw - 48px), (max-width: 1420px) calc((100vw - 160px) / 2), 630px"
+                                width="<?php echo esc_attr($event['width']); ?>"
+                                height="<?php echo esc_attr($event['height']); ?>"
+                                style="object-position: <?php echo esc_attr($event['position']); ?>;"
+                                alt="<?php echo esc_attr($event['alt']); ?>" loading="lazy" decoding="async">
+                        </div>
+                        <div class="event-info">
+                            <h3 class="event-name"><?php echo esc_html($event['title']); ?></h3>
+                            <p class="event-desc"><?php echo esc_html($event['description']); ?></p>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="events-header events-header--archive">
+                <h2 class="events-title">Earlier highlights</h2>
+                <p class="events-subtitle">More moments from our club's journey over the years.</p>
             </div>
 
             <div class="events-grid">
                 <!-- Martial Arts Camp -->
                 <div class="event-card">
                     <div class="event-img-wrap">
-                        <img class="event-img" src="<?php echo esc_url($camp_img); ?>" alt="Martial Arts Camp">
+                        <img class="event-img" src="<?php echo esc_url($camp_img); ?>" alt="Martial Arts Camp" loading="lazy" decoding="async">
                     </div>
                     <div class="event-info">
-                        <h3 class="event-name">Martial arts camp</h3>
+                        <h3 class="event-name">Martial Arts Camp</h3>
                         <p class="event-desc">
-                            We held our annual camp, during the mid of the April, with
-                            <a href="#">Melbourne University Rhee Taekwondo</a> and
-                            <a href="#">Melbourne University Wushu Kung Fu</a> clubs.
+                            Our annual camp brought us together with Melbourne University Rhee Taekwondo
+                            and Melbourne University Wushu Kung Fu for training and time away together.
                         </p>
                     </div>
                 </div>
@@ -464,13 +616,13 @@ if ($custom_logo_id) {
                 <!-- Lion Bushido Tournament -->
                 <div class="event-card">
                     <div class="event-img-wrap">
-                        <img class="event-img" src="<?php echo esc_url($lbkt_img); ?>" alt="Lion Bushido Tournament">
+                        <img class="event-img" src="<?php echo esc_url($lbkt_img); ?>" alt="Lion Bushido Tournament" loading="lazy" decoding="async">
                     </div>
                     <div class="event-info">
-                        <h3 class="event-name">Lion bushido karate tournament</h3>
+                        <h3 class="event-name">Lion Bushido Karate Tournament</h3>
                         <p class="event-desc">
-                            Each August, our club participates in the Lion Bushido Karate Tournament,
-                            an opportunity to put our skills and the lessons from the past year to the test.
+                            We took our training to the Lion Bushido Karate Tournament,
+                            putting our skills and the lessons from the dojo to the test.
                         </p>
                     </div>
                 </div>
@@ -478,13 +630,13 @@ if ($custom_logo_id) {
                 <!-- Lunar New Year Performance -->
                 <div class="event-card">
                     <div class="event-img-wrap">
-                        <img class="event-img" src="<?php echo esc_url($lny_img); ?>" alt="Lunar New Year Performance">
+                        <img class="event-img" src="<?php echo esc_url($lny_img); ?>" alt="Lunar New Year Performance" loading="lazy" decoding="async">
                     </div>
                     <div class="event-info">
-                        <h3 class="event-name">Lunar new year performance</h3>
+                        <h3 class="event-name">Lunar New Year Performance</h3>
                         <p class="event-desc">
-                            We celebrate the Lunar New Year with dynamic karate demonstrations,
-                            showcasing traditional kata and powerful techniques to the university community.
+                            We celebrated the Lunar New Year with karate demonstrations,
+                            sharing traditional kata and techniques with the university community.
                         </p>
                     </div>
                 </div>
@@ -492,19 +644,19 @@ if ($custom_logo_id) {
                 <!-- Clubs Day -->
                 <div class="event-card">
                     <div class="event-img-wrap">
-                        <img class="event-img" src="<?php echo esc_url($clubs_img); ?>" alt="Clubs Day">
+                        <img class="event-img" src="<?php echo esc_url($clubs_img); ?>" alt="Clubs Day" loading="lazy" decoding="async">
                     </div>
                     <div class="event-info">
-                        <h3 class="event-name">Clubs day</h3>
+                        <h3 class="event-name">Clubs Day</h3>
                         <p class="event-desc">
-                            Every semester, we welcome new students at Clubs Day. It's the perfect
-                            opportunity to meet the team, ask questions, and start your karate journey with us.
+                            Clubs Day gave us a chance to meet new students, answer questions,
+                            and introduce more people to karate and the MUKC community.
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </main>
 
     <footer class="mukc-footer">
         <div class="mukc-footer__top">
@@ -571,6 +723,7 @@ if ($custom_logo_id) {
                     burger.classList.toggle('is-active');
                     menu.classList.toggle('is-open');
                     document.body.classList.toggle('no-scroll');
+                    burger.setAttribute('aria-expanded', menu.classList.contains('is-open'));
                 });
 
                 // Close on link click
@@ -579,6 +732,7 @@ if ($custom_logo_id) {
                         burger.classList.remove('is-active');
                         menu.classList.remove('is-open');
                         document.body.classList.remove('no-scroll');
+                        burger.setAttribute('aria-expanded', 'false');
                     });
                 });
 
@@ -588,6 +742,7 @@ if ($custom_logo_id) {
                         burger.classList.remove('is-active');
                         menu.classList.remove('is-open');
                         document.body.classList.remove('no-scroll');
+                        burger.setAttribute('aria-expanded', 'false');
                     }
                 });
             }
